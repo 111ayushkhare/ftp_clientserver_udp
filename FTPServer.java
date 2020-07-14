@@ -8,30 +8,30 @@ public class FTPServer {
         System.out.println("$Server: Server started...");
 
         // Get a datagram socket
-        DatagramSocket datagramSocketServer = new DatagramSocket(9999);
-        DatagramPacket datagramPacketServer;
+        DatagramSocket socketServer = new DatagramSocket(9999);
+        DatagramPacket packetServer;
 
         byte[] bufServer = new byte[1024];
 
-        // Receiving a request
-        datagramPacketServer = new DatagramPacket(bufServer,bufServer.length);
-        datagramSocketServer.receive(datagramPacketServer);
+        while(true) {
+            // Receiving a request
+            packetServer = new DatagramPacket(bufServer,bufServer.length);
+            socketServer.receive(packetServer);
 
-        StringBuilder requestString = getRequestString(bufServer);
-        System.out.println("$Server: Client has opted for choice (" + requestString + ")");
+            StringBuilder requestString = getRequestString(bufServer);
+            System.out.println("$Server: Client's message - " + requestString);
 
-        if (requestString.toString().equals("1")) {
-            System.out.println("$Server: Client has requested to know status (pass/fail)");
-        } else if (requestString.toString().equals("2")) {
-            System.out.println("$Server: Client has requested to get marks");
-        } else if(requestString.toString().equals("0")) {
-            System.out.println("$Server: Client wants to take back the request and shutdown");
-        } else {
-            System.out.println("$Server: Client has made INVALID REQUEST");
+            if (requestString.toString().equals("stop")) {
+                System.out.println("$Server: Client wants to stop");
+                break;
+            }
+
+            // Clear buffer after every message;
+            bufServer = new byte[1024];
         }
 
         System.out.println("$Server: Server shuting down...");
-        datagramSocketServer.close();
+        socketServer.close();
 
     }
 
