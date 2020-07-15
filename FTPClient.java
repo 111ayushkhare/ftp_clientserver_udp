@@ -45,9 +45,11 @@ public class FTPClient {
                 System.out.println("$Client: Client deactivated...");
                 break;
             }
-
-            // Clear the buffer after every message
-            bufReceiveClient = new byte[1024];
+            byte[] recieveData=new byte[1024];
+            DatagramPacket echoReceived=new DatagramPacket(recieveData,recieveData.length);
+            socketClient.receive(echoReceived);
+            String echoprint=new String(echoReceived.getData());
+            System.out.println("Server : "+echoprint);
         }
         
         // Closing the datagram socket

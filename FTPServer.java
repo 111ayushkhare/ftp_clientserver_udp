@@ -10,58 +10,34 @@ public class FTPServer {
 
         // Get a datagram socket
         DatagramSocket socketServer = new DatagramSocket(9999);
-        DatagramPacket receivePacketServer;
 
-        // Server IP address
-        InetAddress ipServer = InetAddress.getLocalHost();
-
-        // Recieve byte array
-        byte[] bufReceiveServer = new byte[1024];
-
-        byte[] bufSendServer;
-        DatagramPacket sendPacketServer;
+        byte[] bufServer = new byte[1024];
+        byte[] echoData = new byte[1024];
 
         while(true) {
             // Receiving a request
-            receivePacketServer = new DatagramPacket(bufReceiveServer, bufReceiveServer.length);
-            socketServer.receive(receivePacketServer);
+            DatagramPacket packetServer = new DatagramPacket(bufServer, bufServer.length);
+            socketServer.receive(packetServer);
 
-            StringBuilder requestString = getRequestString(bufReceiveServer);
+            //StringBuilder requestString = getRequestString(bufServer);
+            //System.out.println("$Server: Client's message - " + requestString);
+            String requestString = new String(packetServer.getData());
             System.out.println("$Server: Client's message - " + requestString);
-
-            // Send byte array
-            String responseString = requestString.toString();
-            bufSendServer = responseString.getBytes();
-
-            // Response by sending message back to Server
-            sendPacketServer = new DatagramPacket(bufSendServer,bufSendServer.length,ipServer,9999);
-            socketServer.send(sendPacketServer); 
-            
-            if (requestString.toString().equals("stop")) {
-                System.out.println("$Server: Client wants to quit");
+            InetAddress IPAddres=packetServer.getAddress();
+            int port =packetServer.getPort();
+            echoData=requestString.getBytes();
+            if (requestString.equals("stop")) {
+                System.out.println("$Server: Client wants to stop");
                 break;
             }
-
-            // Clear buffer after every message
-            bufReceiveServer = new byte[1024];
-
+            DatagramPacket echoPacket =new DatagramPacket(echoData,echoData.length,IPAddres,port);
+            socketServer.send(echoPacket);
+            // Clear buffer after every message;
+            bufServer = new byte[1024];
         }
 
         System.out.println("$Server: Server shuting down...");
         socketServer.close();
 
-    }
-
-    public static StringBuilder getRequestString(byte[] str) {
-        if (str == null) {
-            return null;
-        }
-        StringBuilder reqStr = new StringBuilder();
-        int i = 0;
-        while (str[i] != 0) {
-            reqStr.append((char) str[i]);
-            i++;
-        }
-        return reqStr;
     }
 }
