@@ -7,9 +7,10 @@ public class FTPServer {
     public static void main(String[] args) throws IOException {
 
         System.out.println("$Server: Server started...");
+int listen_port = Integer.valueOf(args[0]);
 
         // Get a datagram socket
-        DatagramSocket socketServer = new DatagramSocket(9999);
+        DatagramSocket socketServer = new DatagramSocket(listen_port);
 
         byte[] bufServer = new byte[1024];
         byte[] echoData = new byte[1024];
