@@ -14,8 +14,12 @@ public class FTPClient {
         DatagramPacket sendPacketClient;
 
         // Get an ip address
-        InetAddress ipClient = InetAddress.getLocalHost();
-        byte[] bufSendClient;
+
+        InetAddress ip= InetAddress.getByName(args[0]);
+        byte[] bufClient;
+
+        
+
 
         Scanner input = new Scanner(System.in);
 
@@ -30,15 +34,13 @@ public class FTPClient {
             bufSendClient = str.getBytes();
 
             // Sending request to server
-            sendPacketClient = new DatagramPacket(bufSendClient,bufSendClient.length,ipClient,9999);
-            socketClient.send(sendPacketClient);
 
-            // Recieving Server's response  
-            receivePacketClient = new DatagramPacket(bufReceiveClient, bufReceiveClient.length);
-            socketClient.receive(receivePacketClient);
+int port = Integer.valueOf(args[1]);
+            packetClient = new DatagramPacket(bufClient,bufClient.length,ip,port);
+            socketClient.send(packetClient);
 
-            String receivedString = new String(receivePacketClient.getData(), 0, bufReceiveClient.length);
-            System.out.println("$Client: Server\'s response - " + receivedString);
+            
+
 
             if (str.equals("stop")) {
                 System.out.println("$Client: You entered \'stop\'");
@@ -46,9 +48,9 @@ public class FTPClient {
                 break;
             }
             byte[] recieveData=new byte[1024];
-            DatagramPacket echoReceived=new DatagramPacket(recieveData,recieveData.length);
-            socketClient.receive(echoReceived);
-            String echoprint=new String(echoReceived.getData());
+            DatagramPacket echoRecieved=new DatagramPacket(recieveData,recieveData.length);
+            socketClient.receive(echoRecieved);
+            String echoprint=new String(echoRecieved.getData());
             System.out.println("Server : "+echoprint);
         }
         
