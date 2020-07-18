@@ -11,25 +11,36 @@ public class FTPClient {
 
         // Get a datagram socket
         DatagramSocket socketClient = new DatagramSocket();
-        DatagramPacket packetClient;
+        DatagramPacket sendPacketClient;
 
         // Get an ip address
+
         InetAddress ip= InetAddress.getByName(args[0]);
         byte[] bufClient;
 
+        
+
+
         Scanner input = new Scanner(System.in);
+
+        byte[] bufReceiveClient = new byte[1024];
+        DatagramPacket receivePacketClient;
 
         while(true) {
             System.out.print("$Client: ");
 
             // Enter your message      
             String str = input.nextLine();
-            bufClient = str.getBytes();
+            bufSendClient = str.getBytes();
 
             // Sending request to server
+
 int port = Integer.valueOf(args[1]);
             packetClient = new DatagramPacket(bufClient,bufClient.length,ip,port);
             socketClient.send(packetClient);
+
+            
+
 
             if (str.equals("stop")) {
                 System.out.println("$Client: You entered \'stop\'");
