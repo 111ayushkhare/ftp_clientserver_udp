@@ -7,14 +7,20 @@ import java.util.Scanner;
 public class FTPClient {
     public static void main(String[] args) throws IOException {
 
-        System.out.println("$Client: Client activated...");
+        System.out.println("$Client: Client activated...\n");
 
         // Get a datagram socket
         DatagramSocket socketClient = new DatagramSocket();
+        
+        // Get a datagram packet
         DatagramPacket packetClient;
 
-        // Get an ip address
+        // Get an ip address of localhost or the server
         InetAddress ip= InetAddress.getByName(args[0]);
+        
+        // Get port number
+        int port = Integer.valueOf(args[1]);
+
         byte[] bufClient;
 
         Scanner input = new Scanner(System.in);
@@ -24,23 +30,29 @@ public class FTPClient {
 
             // Enter your message      
             String str = input.nextLine();
+            // Converting message to bytes
             bufClient = str.getBytes();
 
-            // Sending request to server
-int port = Integer.valueOf(args[1]);
+            // Sending request to server  
             packetClient = new DatagramPacket(bufClient,bufClient.length,ip,port);
             socketClient.send(packetClient);
 
+            // Checking if client wants to stop
             if (str.equals("stop")) {
                 System.out.println("$Client: You entered \'stop\'");
                 System.out.println("$Client: Client deactivated...");
                 break;
             }
-            byte[] recieveData=new byte[1024];
-            DatagramPacket echoRecieved=new DatagramPacket(recieveData,recieveData.length);
+
+            // Recieving response (ECHO) from server
+            byte[] recieveData = new byte[1024];
+            DatagramPacket echoRecieved = new DatagramPacket(recieveData,recieveData.length);
             socketClient.receive(echoRecieved);
+            
             String echoprint=new String(echoRecieved.getData());
-            System.out.println("Server : "+echoprint);
+            System.out.println("$Client: Server's response - " + echoprint.trim());
+
+            System.out.println();
         }
         
         // Closing the datagram socket
