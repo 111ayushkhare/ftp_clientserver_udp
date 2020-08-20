@@ -6,9 +6,6 @@ import java.util.Scanner;
 import java.io.FileOutputStream;
 
 public class FTPClient {
-    
-    final static String COMMAND_WARNING = "Unknown command, correct command - \'file\'\n$Client: Waiting for next update...";
-    
     public static void main(String[] args) throws IOException {
         if (args.length < 2) {
             System.err.println("Syntax: FTPClient <hostName or IPV4 address> <port>");
@@ -56,16 +53,12 @@ public class FTPClient {
             DatagramPacket echoRecieved = new DatagramPacket(recieveData, recieveData.length);
             socketClient.receive(echoRecieved);
 
-            // Converting recieved byte data into String 
+            // Converting recieved byte data into String
             String echoPrint = new String(echoRecieved.getData()).trim();
             System.out.println("$Client: Server\'s response - " + echoPrint);
-            
-            if (echoPrint.equals(COMMAND_WARNING)) {
-                continue;
-             }
-             
+
             // Creating a new file and writing the recieved text file data to it
-            FileOutputStream fileOut = new FileOutputStream("./abc.txt", false);
+            FileOutputStream fileOut = new FileOutputStream("./abc.txt", true);
             char[] ch = echoPrint.toCharArray();
             for (int i = 0; i < ch.length; i++) {
                 fileOut.write(ch[i]);
