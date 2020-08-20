@@ -4,26 +4,45 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Scanner;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.net.SocketTimeoutException;
+import java.net.SocketException;
 
 public class FTPClient {
+    static{
+        System.out.println("Default address is localhost and Port number in use is 8954");
+        System.out.println("If you want to change it pass it as command line argument");
+        System.out.println("As: java FTPServer <IpAddress> <PortNo>");
+    }
     public static void main(String[] args) throws IOException {
-        if (args.length < 2) {
-            System.err.println("Syntax: FTPClient <hostName or IPV4 address> <port>");
-            return;
+
+        // Get port number
+        int port = 8954;   //same Port number as in server
+        int bufsize = 512;
+        final int timeout = 1500;
+        if(args.length != 0) {
+            port = Integer.valueOf(args[1]);
+        }
+        // Get an ip address of localhost or the server
+        InetAddress ip = InetAddress.getByName("localhost");
+        if(args.length != 0) {
+            ip=InetAddress.getByName(args[0]); // from command line argument
         }
         System.out.println("$Client: Client activated...\n");
 
         // Get a datagram socket
         DatagramSocket socketClient = new DatagramSocket();
 
+        try {
+            socketClient.setSoTimeout(timeout);       // set timeout in milliseconds
+        } catch (SocketException e) {
+            System.err.println("socket exception: timeout not set!");
+        }
         // Get a datagram packet
         DatagramPacket packetClient;
 
-        // Get an ip address of localhost or the server
-        InetAddress ip = InetAddress.getByName(args[0]);
 
-        // Get port number
-        int port = Integer.valueOf(args[1]);
+
 
         byte[] bufClient;
 
@@ -55,15 +74,48 @@ public class FTPClient {
 
             // Converting recieved byte data into String
             String echoPrint = new String(echoRecieved.getData()).trim();
-            System.out.println("$Client: Server\'s response - " + echoPrint);
+            if(echoPrint.startsWith("sending")) {
 
-            // Creating a new file and writing the recieved text file data to it
-            FileOutputStream fileOut = new FileOutputStream("./abc.txt", true);
-            char[] ch = echoPrint.toCharArray();
-            for (int i = 0; i < ch.length; i++) {
-                fileOut.write(ch[i]);
+System.out.println("Recieving");
+                String filrname = echoPrint.substring(8);
+
+                    String currentDirectory = System.getProperty("user.dir");
+                    //FileWriter fw = new FileWriter(currentDirectory + "/" + "IIIT"+ filrname);
+                FileOutputStream fout=new FileOutputStream(currentDirectory + "/" + "IIIT"+ filrname);
+                DatagramPacket filereceived = new DatagramPacket(new byte[bufsize], bufsize);
+                while (true) { // read loop
+                    try{
+                    filereceived.setLength(bufsize);  // max received packet size
+                            socketClient.receive(filereceived);          // the actual receive operation
+//                    } catch (SocketTimeoutException ste) {    // receive() timed out
+//                        System.err.println("Response timed out!");
+//                        continue;
+                    } catch (IOException ioe) {                // should never happen!
+                        System.err.println("Bad receive");
+                        break;
+                    }
+                        String stri = new String(filereceived.getData(), 0, filereceived.getLength());
+                        //System.out.print(stri);        // newline must be part of str
+                    byte b[]=stri.getBytes();
+                    fout.write(b);
+
+                    }
+                    fout.close();
+                    System.out.println("Success...");
             }
-            fileOut.close();
+            else
+            {
+                System.out.println("$Client: Server\'s response - " + echoPrint);
+                System.out.println("here");
+
+            }
+//            // Creating a new file and writing the recieved text file data to it
+//            FileOutputStream fileOut = new FileOutputStream("./abc.txt", true);
+//            char[] ch = echoPrint.toCharArray();
+//            for (int i = 0; i < ch.length; i++) {
+//                fileOut.write(ch[i]);
+//            }
+//            fileOut.close();
 
 
             System.out.println();

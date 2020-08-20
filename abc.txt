@@ -1,239 +1,274 @@
-I wish corona may end soon !!!
-Its too much./vmlinuz.old
-/media
-/vmlinuz
-/usr
-/lost+found
-/lib64
-/etc
-/sys
-/root
-/dev
-/tmp
-/mnt
-/srv
-/run
-/opt
-/bin
-/cdrom
-/var
-/home
-/snap
-/initrd.img.old
-/lib32
-/proc
-/initrd.img
-/lib
-/sbin
-/boot
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...I wish corona may end soon !!!
-Its too much./vmlinuz.old
-/media
-/vmlinuz
-/usr
-/lost+found
-/lib64
-/etc
-/sys
-/root
-/dev
-/tmp
-/mnt
-/srv
-/run
-/opt
-/bin
-/cdrom
-/var
-/home
-/snap
-/initrd.img.old
-/lib32
-/proc
-/initrd.img
-/lib
-/sbin
-/boot
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...Unknown command, correct command - 'file'
-$Client: Waiting for next update.../vmlinuz.old
-/media
-/vmlinuz
-/usr
-/lost+found
-/lib64
-/etc
-/sys
-/root
-/dev
-/tmp
-/mnt
-/srv
-/run
-/opt
-/bin
-/cdrom
-/var
-/home
-/snap
-/initrd.img.old
-/lib32
-/proc
-/initrd.img
-/lib
-/sbin
-/boot
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...../testingcode
-../ftp_clientserver_udp
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...Unknown command, correct command - 'file'
-$Client: Waiting for next update...../testingcode
-../ftp_clientserver_udp
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...../../testing
-../../rfc4601.txt
-../../rfc4610.txt
-../../BT13105-CourseGuidelines2020-21-I.pdf
-../../Computer_Network
-../../Prentice Hall - Computer Networks Tanenbaum 4ed.pdf
-../../rfc791.txt
-../../fork
-../../rfc4607.txt
-../../BT13105_BT23104.xlsx
-../../rfc793.txt
-../../recordings
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...../../recordings/CN_Lab3.mkv
-../../recordings/CN_2.mkv
-../../recordings/CN2.mkv
-../../recordings/CN_1(intro).mkv
-../../recordings/CN.mkv
-Unknown command, correct command - 'file'
-$Client: Waiting for next update.../vmlinuz.old
-/media
-/vmlinuz
-/usr
-/lost+found
-/lib64
-/etc
-/sys
-/root
-/dev
-/tmp
-/mnt
-/srv
-/run
-/opt
-/bin
-/cdrom
-/var
-/home
-/snap
-/initrd.img.old
-/lib32
-/proc
-/initrd.img
-/lib
-/sbin
-/boot
-Unknown command, correct command - 'file'
-$Client: Waiting for next update.../media/ankit-maurya
-/media/apt
-Unknown command, correct command - 'file'
-$Client: Waiting for next update.../home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/server.sh
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.idea
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.class
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.git
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.bat
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/desktop.ini
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/client.sh
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.class
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.bat
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/tempCodeRunnerFile.java
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/hello.txt
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.java
-/home/a../testingcode
-../ftp_clientserver_udp
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...../testingcode/terminal argument
-../testingcode/fileIo
-../testingcode/InetAddress
-Unknown command, correct command - 'file'
-$Client: Waiting for next update.../home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/server.sh
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.idea
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.class
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.git
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.bat
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/desktop.ini
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/client.sh
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.class
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.bat
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/tempCodeRunnerFile.java
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/hello.txt
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.java
-/home/a/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/server.sh
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.idea
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.class
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.git
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.bat
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/desktop.ini
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/client.sh
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.class
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.bat
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/tempCodeRunnerFile.java
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/hello.txt
-/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.java
-/home/a../testingcode
-../ftp_clientserver_udp
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...../../testing
-../../rfc4601.txt
-../../rfc4610.txt
-../../BT13105-CourseGuidelines2020-21-I.pdf
-../../Computer_Network
-../../Prentice Hall - Computer Networks Tanenbaum 4ed.pdf
-../../rfc791.txt
-../../fork
-../../rfc4607.txt
-../../BT13105_BT23104.xlsx
-../../rfc793.txt
-../../recordings
-Unknown command, correct command - 'file'
-$Client: Waiting for next update...../../../../../../java_error_in_PYCHARM_25655.log
-../../../../../../.mozilla
-../../../../../../Videos
-../../../../../../.xinputrc
-../../../../../../.gitconfig
-../../../../../../seaborn-data
-../../../../../../.swt
-../../../../../../pycharm-community-2020.1.2
-../../../../../../.wget-hsts
-../../../../../../.npm
-../../../../../../.themes
-../../../../../../.bashrc.save
-../../../../../../.zoom
-../../../../../../.pylint.d
-../../../../../../rtl8821ce
-../../../../../../Pictures
-../../../../../../.atom
-../../../../../../.gradle
-../../../../../../.pub-cache
-../../../../../../.bash_history
-../../../../../../test
-../../../../../../.viminfo
-../../../../../../.keras
-../../../../../../.netrc
-../../../../../../Music
-../../../../../../.android
-../../../../../../Android
-../../../../../../node-v12.18.0-linux-x64
-../../../../../../.icons
-../../../../../../.gnome
-../../../../../../MEGAsync
-../../../../../../.pam_environment
-../../../../../../.gtkrc-2.0
-../../../../../../.java
-../../../../../../.bash_profile
-../../../../../../java
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.io.File;
+import java.io.FileInputStream;
+
+public class FTPServer {
+    static{
+        System.out.println("Default Port number in use is 8954");
+        System.out.println("If you want to change it pass it as command line argument");
+        System.out.println("As: java FTPServer <PortNo>");
+    }
+    public static void main(String[] args) throws IOException {
+
+
+        System.out.println("$Server: Server started...\n");
+
+        // Get the port number
+        int listen_port = 8954;
+        if(args.length != 0) {
+            listen_port = Integer.valueOf(args[0]);
+        }
+        int bufsize = 512;
+
+        // Get a datagram socket
+        DatagramSocket socketServer = new DatagramSocket(listen_port);
+
+
+        // Creating byte array to recieve and send message in bytes
+        byte[] bufServer = new byte[1024];
+        byte[] sendData = new byte[1024];
+
+        while(true) {
+            // Receiving a request
+            System.out.print("$Server: ");
+            DatagramPacket packetServer = new DatagramPacket(bufServer, bufServer.length);
+            socketServer.receive(packetServer);
+
+            InetAddress IPAddress = packetServer.getAddress();
+            int port = packetServer.getPort();
+
+            String requestString = new String(packetServer.getData());
+            System.out.println(requestString.trim());
+
+            StringBuilder sb = new StringBuilder("\n");
+            if (requestString.trim().equals("ls"))
+            {
+                String currentDirectory = System.getProperty("user.dir");
+                File directoryPath=new File(currentDirectory);
+                File fileList[] = directoryPath.listFiles();
+                for (File file: fileList)
+                    sb.append(file+"\n");
+
+            }
+            else if(requestString.trim().startsWith("cd "))
+            {
+                String command = requestString.trim().substring(3)+"/";
+                File directoryPath=new File(command);
+                File fileList[] = directoryPath.listFiles();
+                for (File file: fileList)
+                    sb.append(file+"\n");
+            }
+
+            else if(requestString.trim().startsWith("file")) {
+                String TobeSent = requestString.trim().substring(5);
+                sb.append("sending ");
+                sb.append(TobeSent);
+                sendData = (sb.toString()).getBytes();
+                DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+                socketServer.send(echoPacket);
+
+                FileInputStream fileIn = new FileInputStream("./"+TobeSent);
+                byte[] buffer = new byte[bufsize];
+                DatagramPacket fileContent = new DatagramPacket(new byte[0], 0, IPAddress, port);
+                while (fileIn.read(buffer) != -1) {
+                    int slen;
+                    slen = buffer.length;
+                    //byte[] bbuf = buffer.getBytes();
+
+                    fileContent.setData(buffer);
+                    fileContent.setLength(slen);
+                    System.out.println(buffer);
+                    try {
+                        socketServer.send(fileContent);
+                    }
+                    catch (IOException ioe) {
+                        System.err.println("send() failed");
+                        return;
+                    }
+                }
+
+//                // Reading text file
+//                FileInputStream fileIn = new FileInputStream("./hello.txt");
+//                int i;
+//                do{
+//                    i = fileIn.read();
+//                    if (i != -1) {
+//                        sb.append((char)i);
+//                    }
+//                } while (i != -1);
+//                fileIn.close();
+                continue;
+
+            } else {
+                // If Client types command other than 'file'
+                sb.append("Unknown command, correct command - \'file\'\n$Client: Waiting for next update...");
+            }
+
+
+
+
+            // Converting data to bytes
+            sendData = (sb.toString()).getBytes();
+
+            // Checking if Client wants to stop
+            if (requestString.trim().equals("stop")) {
+                System.out.println("$Server: Client wants to stop");
+                break;
+            }
+
+            // Send the response to Client (ECHO)
+            DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+            socketServer.send(echoPacket);
+            System.out.println("$Server: Response sent.");
+
+            // Clear buffer after every message;
+            bufServer = new byte[1024];
+
+            System.out.println();
+            }
+
+        // Closing the server
+        System.out.println("$Server: Server shuting down...");
+        socketServer.close();
+    }
+}
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.io.File;
+import java.io.FileInputStream;
+
+public class FTPServer {
+    static{
+        System.out.println("Default Port number in use is 8954");
+        System.out.println("If you want to change it pass it as command line argument");
+        System.out.println("As: java FTPServer <PortNo>");
+    }
+    public static void main(String[] args) throws IOException {
+
+
+        System.out.println("$Server: Server started...\n");
+
+        // Get the port number
+        int listen_port = 8954;
+        if(args.length != 0) {
+            listen_port = Integer.valueOf(args[0]);
+        }
+        int bufsize = 512;
+
+        // Get a datagram socket
+        DatagramSocket socketServer = new DatagramSocket(listen_port);
+
+
+        // Creating byte array to recieve and send message in bytes
+        byte[] bufServer = new byte[1024];
+        byte[] sendData = new byte[1024];
+
+        while(true) {
+            // Receiving a request
+            System.out.print("$Server: ");
+            DatagramPacket packetServer = new DatagramPacket(bufServer, bufServer.length);
+            socketServer.receive(packetServer);
+
+            InetAddress IPAddress = packetServer.getAddress();
+            int port = packetServer.getPort();
+
+            String requestString = new String(packetServer.getData());
+            System.out.println(requestString.trim());
+
+            StringBuilder sb = new StringBuilder("\n");
+            if (requestString.trim().equals("ls"))
+            {
+                String currentDirectory = System.getProperty("user.dir");
+                File directoryPath=new File(currentDirectory);
+                File fileList[] = directoryPath.listFiles();
+                for (File file: fileList)
+                    sb.append(file+"\n");
+
+            }
+            else if(requestString.trim().startsWith("cd "))
+            {
+                String command = requestString.trim().substring(3)+"/";
+                File directoryPath=new File(command);
+                File fileList[] = directoryPath.listFiles();
+                for (File file: fileList)
+                    sb.append(file+"\n");
+            }
+
+            else if(requestString.trim().startsWith("file")) {
+                String TobeSent = requestString.trim().substring(5);
+                sb.append("sending ");
+                sb.append(TobeSent);
+                sendData = (sb.toString()).getBytes();
+                DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+                socketServer.send(echoPacket);
+
+                FileInputStream fileIn = new FileInputStream("./"+TobeSent);
+                byte[] buffer = new byte[bufsize];
+                DatagramPacket fileContent = new DatagramPacket(new byte[0], 0, IPAddress, port);
+                while (fileIn.read(buffer) != -1) {
+                    int slen;
+                    slen = buffer.length;
+                    //byte[] bbuf = buffer.getBytes();
+
+                    fileContent.setData(buffer);
+                    fileContent.setLength(slen);
+                    System.out.println(buffer);
+                    try {
+                        socketServer.send(fileContent);
+                    }
+                    catch (IOException ioe) {
+                        System.err.println("send() failed");
+                        return;
+                    }
+                }
+
+//                // Reading text file
+//                FileInputStream fileIn = new FileInputStream("./hello.txt");
+//                int i;
+//                do{
+//                    i = fileIn.read();
+//                    if (i != -1) {
+//                        sb.append((char)i);
+//                    }
+//                } while (i != -1);
+//                fileIn.close();
+                continue;
+
+            } else {
+                // If Client types command other than 'file'
+                sb.append("Unknown command, correct command - \'file\'\n$Client: Waiting for next update...");
+            }
+
+
+
+
+            // Converting data to bytes
+            sendData = (sb.toString()).getBytes();
+
+            // Checking if Client wants to stop
+            if (requestString.trim().equals("stop")) {
+                System.out.println("$Server: Client wants to stop");
+                break;
+            }
+
+            // Send the response to Client (ECHO)
+            DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+            socketServer.send(echoPacket);
+            System.out.println("$Server: Response sent.");
+
+            // Clear buffer after every message;
+            bufServer = new byte[1024];
+
+            System.out.println();
+            }
+
+        // Closing the server
+        System.out.println("$Server: Server shuting down...");
+        socketServer.close();
+    }
+}

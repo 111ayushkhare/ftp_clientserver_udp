@@ -6,19 +6,26 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class FTPServer {
+    static{
+        System.out.println("Default Port number in use is 8954");
+        System.out.println("If you want to change it pass it as command line argument");
+        System.out.println("As: java FTPServer <PortNo>");
+    }
     public static void main(String[] args) throws IOException {
-        if (args.length < 1) {
-            System.out.println("Syntax: FTPServer <port>");
-            return;
-        }
+
 
         System.out.println("$Server: Server started...\n");
 
         // Get the port number
-        int listen_port = Integer.valueOf(args[0]);
+        int listen_port = 8954;
+        if(args.length != 0) {
+            listen_port = Integer.valueOf(args[0]);
+        }
+        int bufsize = 512;
 
         // Get a datagram socket
         DatagramSocket socketServer = new DatagramSocket(listen_port);
+
 
         // Creating byte array to recieve and send message in bytes
         byte[] bufServer = new byte[1024];
@@ -29,6 +36,9 @@ public class FTPServer {
             System.out.print("$Server: ");
             DatagramPacket packetServer = new DatagramPacket(bufServer, bufServer.length);
             socketServer.receive(packetServer);
+
+            InetAddress IPAddress = packetServer.getAddress();
+            int port = packetServer.getPort();
 
             String requestString = new String(packetServer.getData());
             System.out.println(requestString.trim());
@@ -52,27 +62,53 @@ public class FTPServer {
                     sb.append(file+"\n");
             }
 
-            if(requestString.trim().equals("file")) {
+            else if(requestString.trim().startsWith("file")) {
+                String TobeSent = requestString.trim().substring(5);
+                sb.append("sending ");
+                sb.append(TobeSent);
+                sendData = (sb.toString()).getBytes();
+                DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+                socketServer.send(echoPacket);
 
-                // Reading text file
-                FileInputStream fileIn = new FileInputStream("./hello.txt");
-                int i;
-                do{
-                    i = fileIn.read();
-                    if (i != -1) {
-                        sb.append((char)i);
+                FileInputStream fileIn = new FileInputStream("./"+TobeSent);
+                byte[] buffer = new byte[bufsize];
+                DatagramPacket fileContent = new DatagramPacket(new byte[0], 0, IPAddress, port);
+                while (fileIn.read(buffer) != -1) {
+                    int slen;
+                    slen = buffer.length;
+                    //byte[] bbuf = buffer.getBytes();
+
+                    fileContent.setData(buffer);
+                    fileContent.setLength(slen);
+                    System.out.println(buffer);
+                    try {
+                        socketServer.send(fileContent);
                     }
-                } while (i != -1);
-                fileIn.close();
+                    catch (IOException ioe) {
+                        System.err.println("send() failed");
+                        return;
+                    }
+                }
+
+//                // Reading text file
+//                FileInputStream fileIn = new FileInputStream("./hello.txt");
+//                int i;
+//                do{
+//                    i = fileIn.read();
+//                    if (i != -1) {
+//                        sb.append((char)i);
+//                    }
+//                } while (i != -1);
+//                fileIn.close();
+                continue;
 
             } else {
                 // If Client types command other than 'file'
                 sb.append("Unknown command, correct command - \'file\'\n$Client: Waiting for next update...");
             }
 
-                
-            InetAddress IPAddress = packetServer.getAddress();
-            int port = packetServer.getPort();
+
+
 
             // Converting data to bytes
             sendData = (sb.toString()).getBytes();
