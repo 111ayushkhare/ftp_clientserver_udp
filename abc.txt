@@ -1,2 +1,239 @@
 I wish corona may end soon !!!
-Its too much.
+Its too much./vmlinuz.old
+/media
+/vmlinuz
+/usr
+/lost+found
+/lib64
+/etc
+/sys
+/root
+/dev
+/tmp
+/mnt
+/srv
+/run
+/opt
+/bin
+/cdrom
+/var
+/home
+/snap
+/initrd.img.old
+/lib32
+/proc
+/initrd.img
+/lib
+/sbin
+/boot
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...I wish corona may end soon !!!
+Its too much./vmlinuz.old
+/media
+/vmlinuz
+/usr
+/lost+found
+/lib64
+/etc
+/sys
+/root
+/dev
+/tmp
+/mnt
+/srv
+/run
+/opt
+/bin
+/cdrom
+/var
+/home
+/snap
+/initrd.img.old
+/lib32
+/proc
+/initrd.img
+/lib
+/sbin
+/boot
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...Unknown command, correct command - 'file'
+$Client: Waiting for next update.../vmlinuz.old
+/media
+/vmlinuz
+/usr
+/lost+found
+/lib64
+/etc
+/sys
+/root
+/dev
+/tmp
+/mnt
+/srv
+/run
+/opt
+/bin
+/cdrom
+/var
+/home
+/snap
+/initrd.img.old
+/lib32
+/proc
+/initrd.img
+/lib
+/sbin
+/boot
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...../testingcode
+../ftp_clientserver_udp
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...Unknown command, correct command - 'file'
+$Client: Waiting for next update...../testingcode
+../ftp_clientserver_udp
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...../../testing
+../../rfc4601.txt
+../../rfc4610.txt
+../../BT13105-CourseGuidelines2020-21-I.pdf
+../../Computer_Network
+../../Prentice Hall - Computer Networks Tanenbaum 4ed.pdf
+../../rfc791.txt
+../../fork
+../../rfc4607.txt
+../../BT13105_BT23104.xlsx
+../../rfc793.txt
+../../recordings
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...../../recordings/CN_Lab3.mkv
+../../recordings/CN_2.mkv
+../../recordings/CN2.mkv
+../../recordings/CN_1(intro).mkv
+../../recordings/CN.mkv
+Unknown command, correct command - 'file'
+$Client: Waiting for next update.../vmlinuz.old
+/media
+/vmlinuz
+/usr
+/lost+found
+/lib64
+/etc
+/sys
+/root
+/dev
+/tmp
+/mnt
+/srv
+/run
+/opt
+/bin
+/cdrom
+/var
+/home
+/snap
+/initrd.img.old
+/lib32
+/proc
+/initrd.img
+/lib
+/sbin
+/boot
+Unknown command, correct command - 'file'
+$Client: Waiting for next update.../media/ankit-maurya
+/media/apt
+Unknown command, correct command - 'file'
+$Client: Waiting for next update.../home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/server.sh
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.idea
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.class
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.git
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.bat
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/desktop.ini
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/client.sh
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.class
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.bat
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/tempCodeRunnerFile.java
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/hello.txt
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.java
+/home/a../testingcode
+../ftp_clientserver_udp
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...../testingcode/terminal argument
+../testingcode/fileIo
+../testingcode/InetAddress
+Unknown command, correct command - 'file'
+$Client: Waiting for next update.../home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/server.sh
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.idea
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.class
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.git
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.bat
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/desktop.ini
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/client.sh
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.class
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.bat
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/tempCodeRunnerFile.java
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/hello.txt
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.java
+/home/a/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/server.sh
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.idea
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.class
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/.git
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.bat
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/desktop.ini
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/client.sh
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.class
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPServer.bat
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/tempCodeRunnerFile.java
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/hello.txt
+/home/ankit-maurya/Documents/IIITP/5th sem/CN/fork/ftp_clientserver_udp/FTPClient.java
+/home/a../testingcode
+../ftp_clientserver_udp
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...../../testing
+../../rfc4601.txt
+../../rfc4610.txt
+../../BT13105-CourseGuidelines2020-21-I.pdf
+../../Computer_Network
+../../Prentice Hall - Computer Networks Tanenbaum 4ed.pdf
+../../rfc791.txt
+../../fork
+../../rfc4607.txt
+../../BT13105_BT23104.xlsx
+../../rfc793.txt
+../../recordings
+Unknown command, correct command - 'file'
+$Client: Waiting for next update...../../../../../../java_error_in_PYCHARM_25655.log
+../../../../../../.mozilla
+../../../../../../Videos
+../../../../../../.xinputrc
+../../../../../../.gitconfig
+../../../../../../seaborn-data
+../../../../../../.swt
+../../../../../../pycharm-community-2020.1.2
+../../../../../../.wget-hsts
+../../../../../../.npm
+../../../../../../.themes
+../../../../../../.bashrc.save
+../../../../../../.zoom
+../../../../../../.pylint.d
+../../../../../../rtl8821ce
+../../../../../../Pictures
+../../../../../../.atom
+../../../../../../.gradle
+../../../../../../.pub-cache
+../../../../../../.bash_history
+../../../../../../test
+../../../../../../.viminfo
+../../../../../../.keras
+../../../../../../.netrc
+../../../../../../Music
+../../../../../../.android
+../../../../../../Android
+../../../../../../node-v12.18.0-linux-x64
+../../../../../../.icons
+../../../../../../.gnome
+../../../../../../MEGAsync
+../../../../../../.pam_environment
+../../../../../../.gtkrc-2.0
+../../../../../../.java
+../../../../../../.bash_profile
+../../../../../../java

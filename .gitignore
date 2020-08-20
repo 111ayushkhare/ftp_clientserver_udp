@@ -15,9 +15,9 @@
 .idea/
 # Generated files
 .idea/**/contentModel.xml
-
+abc.txt
 # Sensitive or high-churn files
-.idea/**/dataSources/
+.idea/**/dabc.ttaSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml

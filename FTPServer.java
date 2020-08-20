@@ -34,10 +34,27 @@ public class FTPServer {
             System.out.println(requestString.trim());
 
             StringBuilder sb = new StringBuilder("\n");
+            if (requestString.trim().equals("ls"))
+            {
+                String currentDirectory = System.getProperty("user.dir");
+                File directoryPath=new File(currentDirectory);
+                File fileList[] = directoryPath.listFiles();
+                for (File file: fileList)
+                    sb.append(file+"\n");
+
+            }
+            else if(requestString.trim().startsWith("cd "))
+            {
+                String command = requestString.trim().substring(3)+"/";
+                File directoryPath=new File(command);
+                File fileList[] = directoryPath.listFiles();
+                for (File file: fileList)
+                    sb.append(file+"\n");
+            }
 
             if(requestString.trim().equals("file")) {
 
-                // Reading text file 
+                // Reading text file
                 FileInputStream fileIn = new FileInputStream("./hello.txt");
                 int i;
                 do{
