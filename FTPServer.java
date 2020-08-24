@@ -64,9 +64,10 @@ public class FTPServer {
 
             else if(requestString.trim().startsWith("file")) {
                 String TobeSent = requestString.trim().substring(5);
-                sb.append("sending ");
-                sb.append(TobeSent);
-                sendData = (sb.toString()).getBytes();
+                StringBuilder filesb = new StringBuilder("\n");
+                filesb.append("sending ");
+                filesb.append(TobeSent);
+                sendData = (filesb.toString()).getBytes();
                 DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                 socketServer.send(echoPacket);
 
@@ -90,16 +91,6 @@ public class FTPServer {
                     }
                 }
 
-//                // Reading text file
-//                FileInputStream fileIn = new FileInputStream("./hello.txt");
-//                int i;
-//                do{
-//                    i = fileIn.read();
-//                    if (i != -1) {
-//                        sb.append((char)i);
-//                    }
-//                } while (i != -1);
-//                fileIn.close();
                 continue;
 
             } else {

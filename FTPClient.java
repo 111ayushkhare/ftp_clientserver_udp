@@ -4,7 +4,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Scanner;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.net.SocketTimeoutException;
 import java.net.SocketException;
 
@@ -76,12 +75,15 @@ public class FTPClient {
             String echoPrint = new String(echoRecieved.getData()).trim();
             if(echoPrint.startsWith("sending")) {
 
-System.out.println("Recieving");
-                String filrname = echoPrint.substring(8);
+                System.out.println("Recieving");
+                String filename = echoPrint.substring(8);
+                int index = filename.lastIndexOf("/");
+                filename = filename.substring(index + 1);
 
-                    String currentDirectory = System.getProperty("user.dir");
+
+                String currentDirectory = System.getProperty("user.dir");
                     //FileWriter fw = new FileWriter(currentDirectory + "/" + "IIIT"+ filrname);
-                FileOutputStream fout=new FileOutputStream(currentDirectory + "/" + "IIIT"+ filrname);
+                FileOutputStream fout=new FileOutputStream(currentDirectory + "/" +"IIIT"+ filename);
                 DatagramPacket filereceived = new DatagramPacket(new byte[bufsize], bufsize);
                 while (true) { // read loop
                     try{
@@ -106,16 +108,9 @@ System.out.println("Recieving");
             else
             {
                 System.out.println("$Client: Server\'s response - " + echoPrint);
-                System.out.println("here");
 
             }
-//            // Creating a new file and writing the recieved text file data to it
-//            FileOutputStream fileOut = new FileOutputStream("./abc.txt", true);
-//            char[] ch = echoPrint.toCharArray();
-//            for (int i = 0; i < ch.length; i++) {
-//                fileOut.write(ch[i]);
-//            }
-//            fileOut.close();
+
 
 
             System.out.println();
