@@ -17,7 +17,7 @@ public class FTPClient {
 
         // Get port number
         int port = 8954;   //same Port number as in server
-        int bufsize = 512;
+        int bufsize = 1024;
         final int timeout = 1500;
         if(args.length != 0) {
             port = Integer.valueOf(args[1]);
@@ -67,7 +67,7 @@ public class FTPClient {
             }
 
             // Recieving response (ECHO) from server
-            byte[] recieveData = new byte[1024];
+            byte[] recieveData = new byte[bufsize];
             DatagramPacket echoRecieved = new DatagramPacket(recieveData, recieveData.length);
             socketClient.receive(echoRecieved);
 
@@ -93,7 +93,7 @@ public class FTPClient {
 //                        System.err.println("Response timed out!");
 //                        continue;
                     } catch (IOException ioe) {                // should never happen!
-                        System.err.println("Bad receive");
+                        // System.err.println("Bad receive");
                         break;
                     }
                         String stri = new String(filereceived.getData(), 0, filereceived.getLength());

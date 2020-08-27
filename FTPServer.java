@@ -21,15 +21,15 @@ public class FTPServer {
         if(args.length != 0) {
             listen_port = Integer.valueOf(args[0]);
         }
-        int bufsize = 512;
+        int bufsize = 1024;
 
         // Get a datagram socket
         DatagramSocket socketServer = new DatagramSocket(listen_port);
 
 
         // Creating byte array to recieve and send message in bytes
-        byte[] bufServer = new byte[1024];
-        byte[] sendData = new byte[1024];
+        byte[] bufServer = new byte[bufsize];
+        byte[] sendData = new byte[bufsize];
 
         while(true) {
             // Receiving a request
@@ -81,7 +81,7 @@ public class FTPServer {
 
                     fileContent.setData(buffer);
                     fileContent.setLength(slen);
-                    System.out.println(buffer);
+                    //System.out.println(buffer);
                     try {
                         socketServer.send(fileContent);
                     }
@@ -114,7 +114,7 @@ public class FTPServer {
             DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
             socketServer.send(echoPacket);
             System.out.println("$Server: Response sent.");
-            
+
             // Clear buffer after every message;
             bufServer = new byte[1024];
 
