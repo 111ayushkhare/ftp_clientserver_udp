@@ -4,8 +4,13 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.*;
 
 public class FTPServer {
+    static int packet = 0;
+    static int expectedAck = 0;
+    static final int timeout = 1000;
+    static int packetLoss = 0;
     static{
         System.out.println("Default Port number in use is 8954");
         System.out.println("If you want to change it pass it as command line argument");
@@ -72,25 +77,21 @@ public class FTPServer {
                 socketServer.send(echoPacket);
 
                 FileInputStream fileIn = new FileInputStream("./"+TobeSent);
-                byte[] buffer = new byte[bufsize];
+                byte[] buffer = new byte[508];
+                byte[] sizebyte = Helper.int2ByteArray(512);
+                int size=0;
                 DatagramPacket fileContent = new DatagramPacket(new byte[0], 0, IPAddress, port);
-                while (fileIn.read(buffer) != -1) {
-                    int slen;
-                    slen = buffer.length;
-                    //byte[] bbuf = buffer.getBytes();
-
-                    fileContent.setData(buffer);
-                    fileContent.setLength(slen);
-                    //System.out.println(buffer);
-                    try {
-                        socketServer.send(fileContent);
-                    }
-                    catch (IOException ioe) {
-                        System.err.println("send() failed");
-                        return;
-                    }
+                while ((size=fileIn.read(buffer)) != -1) {
+                    sizebyte=Helper.int2ByteArray(size);
+                    buffer=Arrays.copyOf(buffer,512);
+                    buffer[508] = sizebyte[0];
+                    buffer[509] = sizebyte[1];
+                    buffer[510] = sizebyte[2];
+                    buffer[511] = sizebyte[3];
+                    sendDataToClient(buffer, IPAddress, port, timeout);
+                    sendData = new byte[508];
                 }
-
+                fileIn.close();
                 continue;
 
             } else {
@@ -124,5 +125,50 @@ public class FTPServer {
         // Closing the server
         System.out.println("$Server: Server shuting down...");
         socketServer.close();
+    }
+    public static void sendDataToClient(byte[] sendData, InetAddress IPAddress, int port, int timeout) throws IOException
+    {
+        boolean lostPacket = false;
+        int retry = 0;
+
+        byte[] receiveData = new byte[sendData.length];
+
+        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+        do
+        {
+            DatagramSocket serversocket = new DatagramSocket();
+
+            //Server: sending packet
+            serversocket.send(sendPacket);
+
+
+            // START TIMER
+            serversocket.setSoTimeout(timeout);
+
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+            try
+            {
+                serversocket.receive(receivePacket);
+
+
+                int receivedAck = Helper.byteArray2Int(receivePacket.getData());
+                if (receivedAck == expectedAck)
+                {
+                    lostPacket = false;
+                    retry = 0;
+                    expectedAck = (expectedAck + 1) % 2;
+                }
+
+            }
+            catch (Exception e)
+            {
+                packetLoss++;
+                lostPacket = true;
+            }
+            serversocket.close();
+        }
+        while (lostPacket == true);
+        packet++;
     }
 }

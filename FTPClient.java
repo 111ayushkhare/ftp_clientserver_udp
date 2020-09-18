@@ -6,8 +6,13 @@ import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.net.SocketTimeoutException;
 import java.net.SocketException;
+import java.util.*;
+
 
 public class FTPClient {
+    static ArrayList<byte[]> packets = new ArrayList<byte[]>();
+    static int previousAck = 0;
+    static boolean flag=false;
     static{
         System.out.println("Default address is localhost and Port number in use is 8954");
         System.out.println("If you want to change it pass it as command line argument");
@@ -83,27 +88,71 @@ public class FTPClient {
 
                 String currentDirectory = System.getProperty("user.dir");
                     //FileWriter fw = new FileWriter(currentDirectory + "/" + "IIIT"+ filrname);
-                FileOutputStream fout=new FileOutputStream(currentDirectory + "/" +"IIIT"+ filename);
                 DatagramPacket filereceived = new DatagramPacket(new byte[bufsize], bufsize);
-                while (true) { // read loop
-                    try{
-                    filereceived.setLength(bufsize);  // max received packet size
-                            socketClient.receive(filereceived);          // the actual receive operation
-//                    } catch (SocketTimeoutException ste) {    // receive() timed out
-//                        System.err.println("Response timed out!");
-//                        continue;
-                    } catch (IOException ioe) {                // should never happen!
-                        // System.err.println("Bad receive");
+                int ack = 0;
+                byte[] previousData = new byte[512];
+                while (true)
+                {
+                    byte[] receiveData = new byte[512];
+                    byte[] sendData = new byte[512];
+
+                    DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+                    try
+                    {
+                        socketClient.receive(receivePacket);
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("SERVER: Inactive for too long (15 seconds). Goodbye.");
+                        socketClient.close();
+
                         break;
                     }
-                        String stri = new String(filereceived.getData(), 0, filereceived.getLength());
-                        //System.out.print(stri);        // newline must be part of str
-                    byte b[]=stri.getBytes();
-                    fout.write(b);
 
+                    byte[] receivedData = receivePacket.getData();
+
+                    InetAddress IPAddress = receivePacket.getAddress();
+                    port = receivePacket.getPort();
+
+
+                    //CLIENT: sending ACK
+                    sendData = Helper.int2ByteArray(ack);
+                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+                    socketClient.send(sendPacket);
+                    sendData = new byte[512];
+
+                    if (!Arrays.equals(receivedData, previousData))
+                    {
+                        int length = Helper.byteArray2Int(new byte[] {receivedData[508], receivedData[509], receivedData[510], receivedData[511]});
+                        packets.add(Arrays.copyOfRange(receivedData, 0, length));
+                        previousAck = ack;
+                        ack = (ack + 1) % 2;
+                        if (length < 508)
+                            break;
+                    }
+                    else
+                    {
+                        ack = previousAck;
+                    }
+                    previousData = receivedData;
+
+
+                }
+                try
+                {
+                    FileOutputStream fout=new FileOutputStream(currentDirectory + "/" +"IIIT"+ filename);
+                    flag=true;
+                    for (int i = 0; i < packets.size(); i++)
+                    {
+                        fout.write(packets.get(i));
                     }
                     fout.close();
-                    System.out.println("Success...");
+                }
+                catch (Exception ex)
+                {
+                    System.out.println("Problem occured writing to file");
+                }
             }
             else
             {
