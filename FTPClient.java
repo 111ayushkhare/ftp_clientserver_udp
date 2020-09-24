@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.net.SocketTimeoutException;
 import java.net.SocketException;
 import java.util.*;
+import java.io.*;
 
 
 public class FTPClient {
@@ -32,7 +33,7 @@ public class FTPClient {
         if(args.length != 0) {
             ip=InetAddress.getByName(args[0]); // from command line argument
         }
-        System.out.println("$Client: Client activated...\n");
+        System.out.println("Client> Client activated...\n");
 
         // Get a datagram socket
         DatagramSocket socketClient = new DatagramSocket();
@@ -51,15 +52,15 @@ public class FTPClient {
         byte[] bufClient;
 
         Scanner input = new Scanner(System.in);
-
+        countinuelable:
         while(true) {
-            System.out.print("$Client: ");
+            System.out.print("Client> ");
 
             // Enter your message
             String str = input.nextLine();
             // Converting message to bytes
             bufClient = str.getBytes();
-
+            System.out.println(str);
             // Sending request to server
             packetClient = new DatagramPacket(bufClient, bufClient.length, ip, port);
             socketClient.send(packetClient);
@@ -86,9 +87,6 @@ public class FTPClient {
                 filename = filename.substring(index + 1);
 
 
-                String currentDirectory = System.getProperty("user.dir");
-                    //FileWriter fw = new FileWriter(currentDirectory + "/" + "IIIT"+ filrname);
-                DatagramPacket filereceived = new DatagramPacket(new byte[bufsize], bufsize);
                 int ack = 0;
                 byte[] previousData = new byte[512];
                 while (true)
@@ -104,7 +102,7 @@ public class FTPClient {
                     }
                     catch (Exception e)
                     {
-                        System.out.println("SERVER: Inactive for too long (15 seconds). Goodbye.");
+                        System.out.println("timeout occured\n exiting");
                         socketClient.close();
 
                         break;
@@ -116,16 +114,16 @@ public class FTPClient {
                     port = receivePacket.getPort();
 
 
-                    //CLIENT: sending ACK
-                    sendData = Helper.int2ByteArray(ack);
+                    // sending Ack to server..........
+                    sendData = int2ByteArray(ack);
                     DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                     socketClient.send(sendPacket);
                     sendData = new byte[512];
 
                     if (!Arrays.equals(receivedData, previousData))
                     {
-                        int length = Helper.byteArray2Int(new byte[] {receivedData[508], receivedData[509], receivedData[510], receivedData[511]});
-                        packets.add(Arrays.copyOfRange(receivedData, 0, length));
+                        int length = byteArray2Int(new byte[] {receivedData[508], receivedData[509], receivedData[510], receivedData[511]});
+                        packets.add(Arrays.copyOfRange(receivedData,0, length));
                         previousAck = ack;
                         ack = (ack + 1) % 2;
                         if (length < 508)
@@ -141,17 +139,40 @@ public class FTPClient {
                 }
                 try
                 {
-                    FileOutputStream fout=new FileOutputStream(currentDirectory + "/" +"IIIT"+ filename);
+                    String currentDirectory = System.getProperty("user.dir");
+                    File file = new File(currentDirectory+"/"+filename);
+                    FileOutputStream fout;
+                    boolean exists = file.exists();
+                    if (file.exists() && file.isFile())
+                    {
+                        System.out.println("file already exists, do you want to overwrite?\npress Y for yes\npress any key for no\n");
+                        String desire = input.nextLine();
+                        if(desire.equals("Y"))
+                        {
+                            fout=new FileOutputStream(currentDirectory + "/"+ filename);
+                        }
+                        else{
+                            String newfilename = input.nextLine();
+                            fout=new FileOutputStream(currentDirectory + "/"+ newfilename);
+                        }
+                    }
+                    else
+                    {
+                        fout=new FileOutputStream(currentDirectory + "/"+ filename);
+                    }
                     flag=true;
                     for (int i = 0; i < packets.size(); i++)
                     {
                         fout.write(packets.get(i));
                     }
                     fout.close();
+                    System.out.println("Downloaded requested file successfully");
+                    continue countinuelable;
                 }
                 catch (Exception ex)
                 {
                     System.out.println("Problem occured writing to file");
+
                 }
             }
             else
@@ -169,6 +190,30 @@ public class FTPClient {
         socketClient.close();
 
         input.close();
+    }
+
+    public static byte[] int2ByteArray(int value)
+    {
+        return new byte[]
+                {
+                        (byte) (value >>> 24),
+                        (byte) (value >>> 16),
+                        (byte) (value >>> 8),
+                        (byte) value
+                };
+    }
+
+
+    public static int byteArray2Int(byte[] b)
+    {
+        int value = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            int shift = (3 - i) * 8;
+            value += (int) (b[i] & 0xFF) << shift;
+        }
+
+        return value;
     }
 
 }

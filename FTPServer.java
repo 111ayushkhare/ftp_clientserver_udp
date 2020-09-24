@@ -19,7 +19,7 @@ public class FTPServer {
     public static void main(String[] args) throws IOException {
 
 
-        System.out.println("$Server: Server started...\n");
+        System.out.println("FTPServer> Server started...\n");
 
         // Get the port number
         int listen_port = 8954;
@@ -35,20 +35,21 @@ public class FTPServer {
         // Creating byte array to recieve and send message in bytes
         byte[] bufServer = new byte[bufsize];
         byte[] sendData = new byte[bufsize];
-
+        continuelable:
         while(true) {
             // Receiving a request
-            System.out.print("$Server: ");
+            socketServer.setSoTimeout(0);
+            StringBuilder sb = new StringBuilder("\n");
+            System.out.print("FTPServer> ");
             DatagramPacket packetServer = new DatagramPacket(bufServer, bufServer.length);
             socketServer.receive(packetServer);
 
-            InetAddress IPAddress = packetServer.getAddress();
-            int port = packetServer.getPort();
+
 
             String requestString = new String(packetServer.getData());
             System.out.println(requestString.trim());
-
-            StringBuilder sb = new StringBuilder("\n");
+            InetAddress IPAddress = packetServer.getAddress();
+            int port = packetServer.getPort();
             if (requestString.trim().equals("ls"))
             {
                 String currentDirectory = System.getProperty("user.dir");
@@ -78,25 +79,71 @@ public class FTPServer {
 
                 FileInputStream fileIn = new FileInputStream("./"+TobeSent);
                 byte[] buffer = new byte[508];
-                byte[] sizebyte = Helper.int2ByteArray(512);
+                byte[] sizebyte = int2ByteArray(512);
                 int size=0;
+                int sumbyte=0;
                 DatagramPacket fileContent = new DatagramPacket(new byte[0], 0, IPAddress, port);
-                while ((size=fileIn.read(buffer)) != -1) {
-                    sizebyte=Helper.int2ByteArray(size);
+                while ((size = fileIn.read(buffer)) >= 0) {
+                    sizebyte=int2ByteArray(size);
+                    sumbyte+=size;
+                    System.out.print("sent "+sumbyte+" bytes to client"+"\r");
+
                     buffer=Arrays.copyOf(buffer,512);
-                    buffer[508] = sizebyte[0];
-                    buffer[509] = sizebyte[1];
-                    buffer[510] = sizebyte[2];
-                    buffer[511] = sizebyte[3];
-                    sendDataToClient(buffer, IPAddress, port, timeout);
-                    sendData = new byte[508];
+                    for(int i=0;i<4;i++)
+                    {
+                        buffer[508+i] = sizebyte[i];
+
+                    }
+//                    sendSTWT(buffer, IPAddress, port, timeout);
+                    boolean lostPacket = false;
+                    int retry = 0;
+
+                    byte[] receiveData = new byte[buffer.length];
+
+                    DatagramPacket sendPacket = new DatagramPacket(buffer, buffer.length, IPAddress, port);
+                    do
+                    {
+//                        DatagramSocket serversocket = new DatagramSocket();
+
+                        socketServer.send(sendPacket);
+                        socketServer.setSoTimeout(timeout);
+
+                        DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+                        try
+                        {
+                            socketServer.receive(receivePacket);
+
+
+                            int receivedAck = byteArray2Int(receivePacket.getData());
+                            if (receivedAck == expectedAck)
+                            {
+                                lostPacket = false;
+                                retry = 0;
+                                expectedAck = (expectedAck + 1) % 2;
+                            }
+
+                        }
+                        catch (Exception e)
+                        {
+                            packetLoss++;
+                            lostPacket = true;
+                        }
+//                        serversocket.close();
+                    }
+                    while (lostPacket == true);
+                    packet++;
+                    buffer = new byte[508];
                 }
                 fileIn.close();
-                continue;
+                System.out.println("\r");
+
+                System.out.println("done");
+                continue continuelable;
 
             } else {
                 // If Client types command other than 'file'
-                sb.append("Unknown command, correct command - \'file\'\n$Client: Waiting for next update...");
+                sb.append("Unknown Command");
             }
 
 
@@ -107,14 +154,14 @@ public class FTPServer {
 
             // Checking if Client wants to stop
             if (requestString.trim().equals("stop")) {
-                System.out.println("$Server: Client wants to stop");
+                System.out.println("FTPServer> Client wants to stop");
                 break;
             }
 
             // Send the response to Client (ECHO)
             DatagramPacket echoPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
             socketServer.send(echoPacket);
-            System.out.println("$Server: Response sent.");
+            System.out.println("FTPServer> Response sent.");
 
             // Clear buffer after every message;
             bufServer = new byte[1024];
@@ -123,52 +170,29 @@ public class FTPServer {
             }
 
         // Closing the server
-        System.out.println("$Server: Server shuting down...");
+        System.out.println("FTPServer> Server shuting down...");
         socketServer.close();
     }
-    public static void sendDataToClient(byte[] sendData, InetAddress IPAddress, int port, int timeout) throws IOException
+    public static byte[] int2ByteArray(int value)
     {
-        boolean lostPacket = false;
-        int retry = 0;
-
-        byte[] receiveData = new byte[sendData.length];
-
-        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
-        do
-        {
-            DatagramSocket serversocket = new DatagramSocket();
-
-            //Server: sending packet
-            serversocket.send(sendPacket);
-
-
-            // START TIMER
-            serversocket.setSoTimeout(timeout);
-
-            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
-            try
-            {
-                serversocket.receive(receivePacket);
-
-
-                int receivedAck = Helper.byteArray2Int(receivePacket.getData());
-                if (receivedAck == expectedAck)
+        return new byte[]
                 {
-                    lostPacket = false;
-                    retry = 0;
-                    expectedAck = (expectedAck + 1) % 2;
-                }
-
-            }
-            catch (Exception e)
-            {
-                packetLoss++;
-                lostPacket = true;
-            }
-            serversocket.close();
+                        (byte) (value >>> 24),
+                        (byte) (value >>> 16),
+                        (byte) (value >>> 8),
+                        (byte) value
+                };
+    }
+    public static int byteArray2Int(byte[] b)
+    {
+        int value = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            int shift = (3 - i) * 8;
+            value += (int) (b[i] & 0xFF) << shift;
         }
-        while (lostPacket == true);
-        packet++;
+
+        return value;
     }
 }
+
