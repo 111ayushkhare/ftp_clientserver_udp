@@ -1,3 +1,22 @@
 # ftp_clientserver_udp
-FTP client server model with one way communication based on UDP. 
-"Till now our code has echo server , i.e. capable of both way communication , client to server and server to client"
+This code is the Client-Server model which follows UDP protocol. In this model, client can request following - 
+
+1. GET a list of files and folders in client's current working working directory
+    Command used - 'ls'
+
+2. CHANGE the current working directory to both lower and upper levels
+     Commands used - 'cd', 'cd ..', 'cd /' etc.
+     
+3. GET the desired file from Server and write it in its current working directory 
+     Command used - 'get <filename>'
+
+For file transfer part, all types of files - binary , text, can be transfered from server to client on request. This code implements STOP AND WAIT protocol with timeout inolved and progress of transfering of files can be seen in the console.
+
+### there is a bash script that can be used for excuting java code directly
+
+these are the commands for running the server and client
+ 
+'''
+./server.sh
+./client.sh
+'''

@@ -248,7 +248,7 @@ public class FTPServer {
                                 // many bytes has been sent                        //
                                 //***************************************** *******//
                                 sumbyte+=size;
-                                System.out.print("sent "+sumbyte+" bytes to client"+"\r");
+                                System.out.print("sent "+humanize(sumbyte)+" to client"+"\r");
                                 
                             }
 
@@ -348,6 +348,22 @@ public class FTPServer {
         }
 
         return value;
+    }
+    public static String humanize(int n)
+    {
+        String str=new String("");
+        if(n<1024)
+        {
+            str=n+" bytes";
+        }
+        if(n<(1024*1024))
+        {
+            str=(n/1024)+" kb";
+        }
+        else{
+            str=(n/(1024*1024))+" mb";
+        }
+        return str;
     }
 }
 

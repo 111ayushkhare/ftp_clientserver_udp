@@ -206,6 +206,7 @@ public class FTPClient {
                             fout.write(packets.get(i));                           // writing everything to file
                         }
                         fout.close();                                             // closing fout
+                        packets = new ArrayList<byte[]>();
                         System.out.println(CLIENT_SIGNATURE + "Downloaded requested file successfully");
                         continue countinuelable;
                     } catch (Exception ex) {
