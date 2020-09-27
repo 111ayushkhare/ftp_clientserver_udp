@@ -11,66 +11,87 @@ import java.io.*;
 
 
 public class FTPClient {
+    
     static ArrayList<byte[]> packets = new ArrayList<byte[]>();
     static int previousAck = 0;
     static boolean flag=false;
+
+    static final String CLIENT_SIGNATURE = "FTP_Client> ";
+    
+    // Static block running at the very beginning of the program
     static{
-        System.out.println("Default address is localhost and Port number in use is 8954");
-        System.out.println("If you want to change it pass it as command line argument");
-        System.out.println("As: java FTPServer <IpAddress> <PortNo>");
+        System.out.println(CLIENT_SIGNATURE + "Default address is localhost and Port number in use is 8954");
+        System.out.println(CLIENT_SIGNATURE + "If you want to change it pass it as command line argument");
+        System.out.println(CLIENT_SIGNATURE + "As: java FTPServer <IpAddress> <PortNo>");
     }
     public static void main(String[] args) throws IOException {
 
-        // Get port number
+        System.out.println(CLIENT_SIGNATURE + "Client activated...\n");
+
+        // Setting port a fixed pre-defind port number
         int port = 8954;   //same Port number as in server
-        int bufsize = 1024;
-        final int timeout = 1500;
+        
+        // Setting port number to that value provided in command line arguments (If provied)
         if(args.length != 0) {
             port = Integer.valueOf(args[1]);
         }
-        // Get an ip address of localhost or the server
-        InetAddress ip = InetAddress.getByName("localhost");
-        if(args.length != 0) {
-            ip=InetAddress.getByName(args[0]); // from command line argument
-        }
-        System.out.println("Client> Client activated...\n");
 
-        // Get a datagram socket
+        // Setting buffer size for byte arrays used ahead in transmission
+        int bufsize = 1024;
+
+        // Setting timeout value
+        final int TIME_OUT = 1500;
+        
+        // Get ip address of localhost or the server
+        InetAddress ip = InetAddress.getByName("localhost");
+
+        // Setting IP address to that value if provided in command line arguments
+        if(args.length != 0) {
+            ip=InetAddress.getByName(args[0]); 
+        }
+
+        // Intitializing datagram socket
         DatagramSocket socketClient = new DatagramSocket();
 
         try {
+            // Starting the timer for set value
             socketClient.setSoTimeout(timeout);       // set timeout in milliseconds
         } catch (SocketException e) {
-            System.err.println("socket exception: timeout not set!");
+            // Printing out error message
+            System.err.println(CLIENT_SIGNATURE + "Socket exception: Timeout not set!");
         }
-        // Get a datagram packet
+
+        // Declaring a datagram packet
         DatagramPacket packetClient;
 
-
-
-
+        // Declaring a byte array
         byte[] bufClient;
 
         Scanner input = new Scanner(System.in);
+        
         countinuelable:
         while(true) {
-            System.out.print("Client> ");
+            System.out.print(CLIENT_SIGNATURE);
 
-            // Enter your message
+            // Here client enters its message
             String str = input.nextLine();
-            // Converting message to bytes
-            bufClient = str.getBytes();
-            System.out.println(str);
-            // Sending request to server
-            packetClient = new DatagramPacket(bufClient, bufClient.length, ip, port);
-            socketClient.send(packetClient);
 
-            // Checking if client wants to stop
+            // Printing out entered message in Client's screen
+            System.out.println(str);
+
+            // Checking if the client wants to stop
             if (str.equals("stop")) {
-                System.out.println("$Client: You entered \'stop\'");
-                System.out.println("$Client: Client deactivated...");
+                System.out.println(CLIENT_SIGNATURE + "You entered \'stop\'");
+                System.out.println(CLIENT_SIGNATURE + "Client deactivated...");
                 break;
             }
+
+            // Converting message to bytes
+            bufClient = str.getBytes();
+
+            // Sending request to the server
+            packetClient = new DatagramPacket(bufClient, bufClient.length, ip, port);
+            socketClient.send(packetClient);
 
             // Recieving response (ECHO) from server
             byte[] recieveData = new byte[bufsize];
