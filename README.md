@@ -23,9 +23,7 @@ For file transfer part, all types of files - binary , text, can be transfered fr
 
 these are the commands for running the server and client
  
-'''
-./server.sh
-'''
-'''
-./client.sh
-'''
+
+>./server.sh
+
+>./client.sh
