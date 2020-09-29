@@ -18,5 +18,6 @@ these are the commands for running the server and client
  
 '''
 ./server.sh
+
 ./client.sh
 '''
