@@ -17,7 +17,7 @@ This code is the Client-Server model which follows UDP protocol. In this model, 
 >> eg. 2,3 4
     
 
-For file transfer part, all types of files - binary , text, can be transfered from server to client on request. This code implements STOP AND WAIT protocol with timeout inolved and progress of transfering of files can be seen in the console.
+For file transfer part, all types of files - binary , text, can be transfered from server to client on request. This code implements STOP AND WAIT protocol and Go Back N protocol with timeout inolved and progress of transfering of files can be seen in the console.
 
 ### there is a bash script that can be used for excuting java code directly
 
