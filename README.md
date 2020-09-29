@@ -8,7 +8,14 @@ This code is the Client-Server model which follows UDP protocol. In this model, 
      Commands used - 'cd', 'cd ..', 'cd /' etc.
      
 3. GET the desired file from Server and write it in its current working directory 
-     Command used - 'get <filename>'
+     Command used -
+     '''get filename'''
+> choose a protocol for transfering 
+>> 1 for Stop & wait
+
+> anything other than 1 for GoBackN
+>> eg. 2,3 4
+    
 
 For file transfer part, all types of files - binary , text, can be transfered from server to client on request. This code implements STOP AND WAIT protocol with timeout inolved and progress of transfering of files can be seen in the console.
 
@@ -18,6 +25,7 @@ these are the commands for running the server and client
  
 '''
 ./server.sh
-
+'''
+'''
 ./client.sh
 '''
